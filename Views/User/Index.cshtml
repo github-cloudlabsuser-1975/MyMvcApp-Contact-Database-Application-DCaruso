@@ -19,7 +19,15 @@
         </th>
         <th></th>
     </tr>
-
+     <tr>
+        <td colspan="3">
+            <form asp-action="Index" method="get" class="form-inline">
+            <label for="searchName" class="mr-2">Find By Name:</label>
+            <input type="text" id="searchName" name="searchName" class="form-control mr-2" />
+            <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </td>
+    </tr> 
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -32,6 +40,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+
         </td>
     </tr>
 }

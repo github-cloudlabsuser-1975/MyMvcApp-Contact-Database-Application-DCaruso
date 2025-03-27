@@ -9,9 +9,16 @@ public class UserController : Controller
     public static System.Collections.Generic.List<User> userlist = new System.Collections.Generic.List<User>();
 
         // GET: User
-        public ActionResult Index()
+        
+        public ActionResult Index(string searchName)
         {
+            // This method is responsible for displaying the list of users.
             // Implement the Index method here
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                var filteredUsers = userlist.Where(u => u.Name.Contains(searchName, StringComparison.OrdinalIgnoreCase)).ToList();
+                return View(filteredUsers);
+            }
             return View(userlist);
         }
 
@@ -110,5 +117,16 @@ public class UserController : Controller
 
             userlist.Remove(user);
             return RedirectToAction(nameof(Index));
+        }
+        //GET: FindUserByNAme
+        public ActionResult FindUserByName(string name)
+        {
+            // Implement the FindUserByName method here
+            var user = userlist.FirstOrDefault(u => u.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
 }
