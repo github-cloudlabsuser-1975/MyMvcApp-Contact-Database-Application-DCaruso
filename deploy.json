@@ -25,11 +25,11 @@
     "parameters": {
       "appServicePlanName": {
         "type": "string",
-        "defaultValue": "myAppServicePlan"
+        "defaultValue": "myAppServicePlanDcaruso"
       },
       "webAppName": {
         "type": "string",
-        "defaultValue": "MyMvcApp"
+        "defaultValue": "MyMvcAppDcaruso"
       }
     }
   }
